@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BMW Promo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #190019, #3A0CA3);
+            color: #f0e6f6;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: rgba(10, 0, 20, 0.6);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #E0AAFF;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: #FDE2FF;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #FFB3FF;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .car-image {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .car-image img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 6px 20px rgba(255, 200, 255, 0.4);
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+
+        .car-image img:hover {
+            transform: scale(1.05);
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #FFE5F1;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #f3d9fa;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #9D4EDD;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #7B2CBF;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(10, 0, 30, 0.9);
+        }
+
+        .modal-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .modal-item {
+            text-align: center;
+        }
+
+        .modal-content img {
+            width: 200px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .modal-content a {
+            display: block;
+            color: #FFD6FF;
+            text-decoration: underline;
+            font-size: 14px;
+        }
+
+        .modal-content a:hover {
+            color: #ffffff;
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">BMWDrive</div>
+    <nav>
+        <ul>
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="Models.html">Models</a></li>
+            <li><a href="Gallary.html">Gallery</a></li>
+            <li><a href="Team.html">Team</a></li>
+            <li><a href="Contact.html">Contact</a></li>
+            <li><a href="FAQ.html">FAQ</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="car-image">
+        <img src="img.png" alt="BMW Car">
+        <img src="img.png" alt="BMW Car">
+        <img src="img.png" alt="BMW Car">
+    </div>
+
+    <h1>Experience the Power of BMW</h1>
+    <p>Luxury, performance, and design — all in one iconic ride. Drive the future today with BMW.</p>
+    <a href="Register.html " class="btn">Explore Models</a>
+</section>
+
+<!-- Modal -->
+<div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content" id="modalImages"></div>
+</div>
+
+<script>
+    const imageSets = {
+        "img/img_1.png": [
+            { src: "img.png", link: "https://example.com/model1-1" },
+            { src: "img/img_1_2.png", link: "https://example.com/model1-2" },
+            { src: "img/img_1_3.png", link: "https://example.com/model1-3" },
+            { src: "img/img_1_4.png", link: "https://example.com/model1-4" },
+            { src: "img/img_1_5.png", link: "https://example.com/model1-5" }
+        ],
+        "img/img_2.png": [
+            { src: "img/img_2_1.png", link: "https://example.com/model2-1" },
+            { src: "img/img_2_2.png", link: "https://example.com/model2-2" },
+            { src: "img/img_2_3.png", link: "https://example.com/model2-3" },
+            { src: "img/img_2_4.png", link: "https://example.com/model2-4" },
+            { src: "img/img_2_5.png", link: "https://example.com/model2-5" }
+        ],
+        "img/img_3.png": [
+            { src: "img/img_3_1.png", link: "https://example.com/model3-1" },
+            { src: "img/img_3_2.png", link: "https://example.com/model3-2" },
+            { src: "img/img_3_3.png", link: "https://example.com/model3-3" },
+            { src: "img/img_3_4.png", link: "https://example.com/model3-4" },
+            { src: "img/img_3_5.png", link: "https://example.com/model3-5" }
+        ]
+    };
+
+    const modal = document.getElementById("imageModal");
+    const modalImages = document.getElementById("modalImages");
+    const closeBtn = document.querySelector(".close");
+
+    document.querySelectorAll(".car-image img").forEach(img => {
+        img.addEventListener("click", () => {
+            const imgSrc = img.getAttribute("src");
+            const relatedImages = imageSets[imgSrc] || [];
+            modalImages.innerHTML = relatedImages.map(item => `
+        <div class="modal-item">
+          <img src="${item.src}" alt="Model Image">
+          <a href="${item.link}" target="_blank">
+        </div>
+      `).join("");
+            modal.style.display = "block";
+        });
+    });
+
+    closeBtn.onclick = () => {
+        modal.style.display = "none";
+    }
+
+    window.onclick = (e) => {
+        if (e.target === modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
